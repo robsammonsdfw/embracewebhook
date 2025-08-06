@@ -1,0 +1,18 @@
+{
+  "name": "telediets-shopify-webhook",
+  "version": "1.0.0",
+  "description": "Shopify webhook handler for TeleDiets integration",
+  "type": "module",
+  "main": "api/webhook.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "echo 'Use vercel dev for local development'"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
