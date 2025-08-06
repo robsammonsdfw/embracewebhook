@@ -1,17 +1,16 @@
 // api/webhook.js - Vercel serverless function for TeleDiets integration
 
-import crypto from 'crypto';
+import { createHmac, timingSafeEqual } from 'crypto';
 
 // Webhook verification function
 function verifyShopifyWebhook(data, hmacHeader, secret) {
   if (!hmacHeader || !secret) return false;
   
-  const calculatedHmac = crypto
-    .createHmac('sha256', secret)
+  const calculatedHmac = createHmac('sha256', secret)
     .update(data, 'utf8')
     .digest('base64');
   
-  return crypto.timingSafeEqual(
+  return timingSafeEqual(
     Buffer.from(calculatedHmac),
     Buffer.from(hmacHeader)
   );
